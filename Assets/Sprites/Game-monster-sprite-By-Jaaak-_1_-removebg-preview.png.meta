@@ -1,0 +1,457 @@
+fileFormatVersion: 2
+guid: 93078b862cb28c6459b3f624416a81f5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4984690718201001589
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_0
+  - first:
+      213: -2039765845516986102
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_1
+  - first:
+      213: -7117875298411261809
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_2
+  - first:
+      213: -5387538076666113802
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_3
+  - first:
+      213: 5956967495986078403
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_4
+  - first:
+      213: 4226827316539904322
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_5
+  - first:
+      213: 7494572886952397111
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_6
+  - first:
+      213: -1978753805146610567
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_7
+  - first:
+      213: -3942992818283003497
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_8
+  - first:
+      213: 6244335430448384761
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_9
+  - first:
+      213: 4226753735006966433
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_10
+  - first:
+      213: 722631925070412240
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_11
+  - first:
+      213: 4955717826072948472
+    second: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 628
+        width: 127
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 576be855ccd2d2540800000000000000
+      internalID: 4984690718201001589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 627
+        width: 123
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a095cf845cb41b3e0800000000000000
+      internalID: -2039765845516986102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 535
+        width: 130
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f805ba2d02a383d90800000000000000
+      internalID: -7117875298411261809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 534
+        width: 127
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f0dc66e9ae9b35b0800000000000000
+      internalID: -5387538076666113802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 441
+        width: 114
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c26cc050666ba250800000000000000
+      internalID: 5956967495986078403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 435
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2415749bc05b8aa30800000000000000
+      internalID: 4226827316539904322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 355
+        width: 169
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 739421e2552120860800000000000000
+      internalID: 7494572886952397111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 331
+        width: 117
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 974a84ae5ed0a84e0800000000000000
+      internalID: -1978753805146610567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 234
+        width: 58
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79143523ceca749c0800000000000000
+      internalID: -3942992818283003497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 233
+        width: 60
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fa03467df558a650800000000000000
+      internalID: 6244335430448384761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 130
+        width: 90
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a25520b02278aa30800000000000000
+      internalID: 4226753735006966433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 127
+        width: 84
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d9bd2d38ed470a00800000000000000
+      internalID: 722631925070412240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game-monster-sprite-By-Jaaak-_1_-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 37
+        width: 103
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe26263b1f36c440800000000000000
+      internalID: 4955717826072948472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_0: 4984690718201001589
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_1: -2039765845516986102
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_10: 4226753735006966433
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_11: 722631925070412240
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_12: 4955717826072948472
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_2: -7117875298411261809
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_3: -5387538076666113802
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_4: 5956967495986078403
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_5: 4226827316539904322
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_6: 7494572886952397111
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_7: -1978753805146610567
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_8: -3942992818283003497
+      Game-monster-sprite-By-Jaaak-_1_-removebg-preview_9: 6244335430448384761
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
