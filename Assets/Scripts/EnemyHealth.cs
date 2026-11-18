@@ -3,19 +3,25 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int health = 3;
+    [SerializeField] private EnemyStats stats;
+    private int health;
+
+    private void Awake() => health = stats.maxHP;
     public AudioClip deathSound;
     [Range(0f, 1f)]
     public float deathVolume = 1f;
 
     public void TakeDamage(int damage)
     {
+        if (health <= 0)
+            return;
+
         health -= damage;
         Debug.Log("Враг получил урон! HP: " + health);
 
         if (health <= 0)
         {
-            Debug.Log("Враг уничтожен: " + transform.root.name);
+            Debug.Log("Враг уничтожен: " + gameObject.name);
 
             if (deathSound != null)
             {
@@ -26,7 +32,7 @@ public class EnemyHealth : MonoBehaviour
                 );
             }
 
-            Destroy(transform.root.gameObject);
+            Destroy(gameObject);
         }
     }
 }

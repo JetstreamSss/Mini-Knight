@@ -21,6 +21,10 @@ public class EnemyStats : ScriptableObject
     public float windUpTime = 0.5f;
     public float cooldown = 1.5f;
 
+    [Header("Снаряд")]
+    public float projectileSpeed;
+    public float projectileLifetime;
+
     [Header("Рывок (Charger)")]
     public float chargeSpeed = 9f;
     public float chargeTime = 0.6f;

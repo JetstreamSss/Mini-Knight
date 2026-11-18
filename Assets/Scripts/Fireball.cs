@@ -2,30 +2,32 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    public float speed = 6f;
-    public float lifeTime = 3f;
-    public int damage = 20;
+    private EnemyStats stats;
 
     private Vector2 direction;
 
-    public void Launch(Vector2 dir)
+    public void Launch(Vector2 dir, EnemyStats source)
     {
+        stats = source;
         direction = dir.normalized;
-        Destroy(gameObject, lifeTime);
+        Destroy(gameObject, stats.projectileLifetime);
     }
 
     void Update()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        if (stats == null)
+            return;
+
+        transform.Translate(direction * stats.projectileSpeed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         PlayerHealth player = other.GetComponentInParent<PlayerHealth>();
 
-        if (player != null)
+        if (player != null && stats != null)
         {
-            player.TakeDamage(damage);
+            player.TakeDamage(stats.damage);
             Destroy(gameObject);
         }
     }

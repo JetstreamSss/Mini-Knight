@@ -4,15 +4,6 @@ public class Charger : EnemyBase
 {
     enum State { Idle, WindUp, Charge, Recover }
 
-    [Header("Charge")]
-    [SerializeField] float windUp = 0.7f;
-    [SerializeField] float chargeSpeed = 9f;
-    [SerializeField] float chargeTime = 0.6f;
-    [SerializeField] float recoverTime = 1.5f;
-
-    [Header("Hit")]
-    [SerializeField] int damage = 1;
-    [SerializeField] float hitRadius = 0.9f;
     [SerializeField] SpriteRenderer sprite;
 
     State state = State.Idle;
@@ -31,7 +22,7 @@ public class Charger : EnemyBase
                     chargeDir = player.position.x > transform.position.x ? 1 : -1;
                     Face(chargeDir);
                     sprite.color = Color.red;      // телеграф
-                    timer = windUp;
+                    timer = stats.windUpTime;
                     state = State.WindUp;
                 }
                 break;
@@ -41,18 +32,18 @@ public class Charger : EnemyBase
                 timer -= Time.fixedDeltaTime;
                 if (timer <= 0f)
                 {
-                    timer = chargeTime;
+                    timer = stats.chargeTime;
                     hitDone = false;
                     state = State.Charge;
                 }
                 break;
 
             case State.Charge:
-                Move(chargeDir, chargeSpeed);
-                if (!hitDone && Vector2.Distance(transform.position, player.position) <= hitRadius)
+                Move(chargeDir, stats.chargeSpeed);
+                if (!hitDone && Vector2.Distance(transform.position, player.position) <= stats.hitRadius)
                 {
                     PlayerHealth hp = player.GetComponent<PlayerHealth>();
-                    if (hp != null) hp.TakeDamage(damage);
+                    if (hp != null) hp.TakeDamage(stats.damage);
                     hitDone = true;
                 }
                 timer -= Time.fixedDeltaTime;
@@ -60,7 +51,7 @@ public class Charger : EnemyBase
                 {
                     Stop();
                     sprite.color = Color.white;
-                    timer = recoverTime;
+                    timer = stats.recoverTime;
                     state = State.Recover;
                 }
                 break;

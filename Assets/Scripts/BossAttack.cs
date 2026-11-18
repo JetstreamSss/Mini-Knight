@@ -5,7 +5,7 @@ public class BossAttack : MonoBehaviour
     public GameObject fireballPrefab;
     public Transform firePoint;
     public Animator animator;
-    public float attackCooldown = 2f;
+    [SerializeField] private EnemyStats stats;
 
     private float timer;
 
@@ -13,7 +13,7 @@ public class BossAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= attackCooldown)
+        if (timer >= stats.cooldown)
         {
             timer = 0f;
             animator.SetTrigger("Attack");
@@ -34,6 +34,6 @@ public class BossAttack : MonoBehaviour
         Fireball script = fire.GetComponent<Fireball>();
 
         if (script != null)
-            script.Launch(Vector2.right);
+            script.Launch(Vector2.right, stats);
     }
 }

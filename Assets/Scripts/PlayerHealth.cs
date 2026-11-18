@@ -5,10 +5,7 @@ using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 3;
-    public float invincibilityDuration = 1f;
-    public float blinkInterval = 0.1f;
-    public float respawnDelay = 2f;
+    [SerializeField] private PlayerStats stats;
     public Sprite deathSprite;
 
     public TMP_Text healthText;
@@ -66,7 +63,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = stats.maxHealth;
         UpdateHealthText();
         Debug.Log("HP рыцаря: " + currentHealth);
     }
@@ -75,6 +72,11 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isInvincible || isDead || currentHealth <= 0)
             return;
+
+#if UNITY_ANDROID || UNITY_IOS
+        if (ProgressStore.VibrationEnabled)
+            Handheld.Vibrate();
+#endif
 
         currentHealth = Mathf.Max(0, currentHealth - damage);
         UpdateHealthText();
@@ -96,7 +98,7 @@ public class PlayerHealth : MonoBehaviour
     private void UpdateHealthText()
     {
         if (healthText != null)
-            healthText.text = "ХП: " + currentHealth + " / " + maxHealth;
+            healthText.text = "ХП: " + currentHealth + " / " + stats.maxHealth;
     }
 
     private IEnumerator DamageEffect()
@@ -104,15 +106,15 @@ public class PlayerHealth : MonoBehaviour
         isInvincible = true;
         float elapsed = 0f;
 
-        while (elapsed < invincibilityDuration)
+        while (elapsed < stats.invincibilityDuration)
         {
             SetAlpha(0.15f);
-            yield return new WaitForSeconds(blinkInterval);
+            yield return new WaitForSeconds(stats.blinkInterval);
 
             SetAlpha(1f);
-            yield return new WaitForSeconds(blinkInterval);
+            yield return new WaitForSeconds(stats.blinkInterval);
 
-            elapsed += blinkInterval * 2f;
+            elapsed += stats.blinkInterval * 2f;
         }
 
         SetAlpha(1f);
@@ -149,7 +151,7 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log("Рыцарь погиб!");
 
-        yield return new WaitForSeconds(respawnDelay);
+        yield return new WaitForSeconds(stats.respawnDelay);
 
         transform.position = spawnPosition;
 
@@ -162,7 +164,7 @@ public class PlayerHealth : MonoBehaviour
             rb.gravityScale = originalGravityScale;
         }
 
-        currentHealth = maxHealth;
+        currentHealth = stats.maxHealth;
         UpdateHealthText();
         SetAlpha(1f);
 

@@ -5,8 +5,6 @@ public class Shooter : EnemyBase
     enum State { Idle, Aim, Shoot, Cooldown }
 
     [Header("Attack")]
-    [SerializeField] float aimTime = 0.6f;
-    [SerializeField] float cooldown = 1.6f;
     [SerializeField] Transform firePoint;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] SpriteRenderer sprite;
@@ -22,7 +20,7 @@ public class Shooter : EnemyBase
                 if (CanSeePlayer())
                 {
                     state = State.Aim;
-                    timer = aimTime;
+                    timer = stats.windUpTime;
                     sprite.color = Color.red;
                 }
                 break;
@@ -43,7 +41,7 @@ public class Shooter : EnemyBase
                 Fire();
                 sprite.color = Color.white;
                 state = State.Cooldown;
-                timer = cooldown;
+                timer = stats.cooldown;
                 break;
 
             case State.Cooldown:
@@ -60,6 +58,6 @@ public class Shooter : EnemyBase
         fire.SetActive(true);
 
         Fireball fb = fire.GetComponent<Fireball>();
-        if (fb != null) fb.Launch(dir);
+        if (fb != null) fb.Launch(dir, stats);
     }
 }

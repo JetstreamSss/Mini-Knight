@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public int damage = 1;
+    [SerializeField] private EnemyStats stats;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,7 +16,7 @@ public class EnemyDamage : MonoBehaviour
 
         if (health != null)
         {
-            health.TakeDamage(damage);
+            health.TakeDamage(stats.damage);
         }
         else
         {

@@ -4,9 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-    public float fallLimit = -10f;
+    [SerializeField] private PlayerStats stats;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -58,10 +56,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isResetting)
+        if (isResetting || Time.timeScale <= 0f)
             return;
 
-        if (transform.position.y < fallLimit)
+        if (transform.position.y < stats.fallLimit)
         {
             isResetting = true;
             Time.timeScale = 1f;
@@ -142,7 +140,7 @@ public class PlayerController : MonoBehaviour
         if (rb == null)
             return;
 
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, stats.jumpForce);
         isGrounded = false;
 
         if (HasParameter("Jump", AnimatorControllerParameterType.Trigger))
@@ -163,7 +161,7 @@ public class PlayerController : MonoBehaviour
         if (!isResetting && rb != null && rb.simulated)
         {
             rb.linearVelocity = new Vector2(
-                moveInput * moveSpeed,
+                moveInput * stats.moveSpeed,
                 rb.linearVelocity.y);
         }
     }

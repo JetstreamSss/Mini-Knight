@@ -5,21 +5,21 @@ public class Patroller : EnemyBase
     enum State { Patrol, Chase, WindUp, Cooldown }
 
     [Header("Patrol")]
-    [SerializeField] Transform pointA;
-    [SerializeField] Transform pointB;
+    [SerializeField] Vector2 patrolOffsets;
 
     [Header("Attack")]
     [SerializeField] SpriteRenderer sprite;
 
     State state = State.Patrol;
-    Transform patrolTarget;
+    float spawnX;
+    bool towardsB = true;
     float timer;
     float lostTimer;
 
     protected override void Start()
     {
         base.Start();
-        patrolTarget = pointB;
+        spawnX = transform.position.x;
     }
 
     void FixedUpdate()
@@ -35,9 +35,12 @@ public class Patroller : EnemyBase
 
     void DoPatrol()
     {
-        float dx = patrolTarget.position.x - transform.position.x;
-        if (Mathf.Abs(dx) < 0.1f)
-            patrolTarget = (patrolTarget == pointA) ? pointB : pointA;
+        float dx = spawnX + (towardsB ? patrolOffsets.y : patrolOffsets.x) - transform.position.x;
+        if (Mathf.Abs(dx) <= stats.patrolSpeed * Time.fixedDeltaTime)
+        {
+            towardsB = !towardsB;
+            dx = spawnX + (towardsB ? patrolOffsets.y : patrolOffsets.x) - transform.position.x;
+        }
 
         Move(Mathf.Sign(dx), stats.patrolSpeed);
 

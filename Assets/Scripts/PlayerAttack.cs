@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public int damage = 1;
-    public float attackRange = 3f;
+    [SerializeField] private PlayerStats stats;
     public Transform attackPoint;
     public LayerMask enemyLayer;
     public AudioSource attackAudio;
@@ -25,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(
             attackPoint.position,
-            attackRange,
+            stats.attackRange,
             enemyLayer
         );
 
@@ -34,12 +33,12 @@ public class PlayerAttack : MonoBehaviour
             BossHealth boss = enemy.GetComponentInParent<BossHealth>();
 
             if (boss != null)
-                boss.TakeDamage(damage);
+                boss.TakeDamage(stats.damage);
 
             EnemyHealth health = enemy.GetComponentInParent<EnemyHealth>();
 
             if (health != null)
-                health.TakeDamage(damage);
+                health.TakeDamage(stats.damage);
         }
     }
 }

@@ -1,44 +1,25 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BossHealth : MonoBehaviour
 {
-    public int maxHealth = 10;
-
+    [SerializeField] private EnemyStats stats;
     private int currentHealth;
-    private bool isDead;
 
-    private void Awake()
-    {
-        currentHealth = maxHealth;
-    }
+    private void Awake() => currentHealth = stats.maxHP;
 
     public void TakeDamage(int damage)
     {
-        if (isDead)
+        if (currentHealth <= 0)
             return;
 
         currentHealth -= damage;
-        Debug.Log("Босс получил урон! Осталось HP: " + currentHealth);
+        if (currentHealth > 0)
+            return;
 
-        if (currentHealth <= 0)
-        {
-            isDead = true;
-            Debug.Log("Босс побеждён!");
+        if (LevelLoader.Current != null && LevelLoader.Current.ReportBossDefeated())
+            SceneManager.LoadScene("WinScene");
 
-            string scene = SceneManager.GetActiveScene().name.ToLower();
-            Debug.Log("Текущая сцена: " + scene);
-
-            if (scene == "level3")
-            {
-                Debug.Log("Загружаю WinScene!");
-                Time.timeScale = 1f;
-                SceneManager.LoadScene("WinScene");
-                return;
-            }
-
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
