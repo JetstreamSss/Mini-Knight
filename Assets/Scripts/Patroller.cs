@@ -7,17 +7,8 @@ public class Patroller : EnemyBase
     [Header("Patrol")]
     [SerializeField] Transform pointA;
     [SerializeField] Transform pointB;
-    [SerializeField] float patrolSpeed = 1.5f;
-
-    [Header("Chase")]
-    [SerializeField] float chaseSpeed = 3f;
-    [SerializeField] float loseSightTime = 2f;
 
     [Header("Attack")]
-    [SerializeField] float attackRange = 1.2f;
-    [SerializeField] float windUp = 0.5f;
-    [SerializeField] float cooldown = 1.5f;
-    [SerializeField] int damage = 1;
     [SerializeField] SpriteRenderer sprite;
 
     State state = State.Patrol;
@@ -48,7 +39,7 @@ public class Patroller : EnemyBase
         if (Mathf.Abs(dx) < 0.1f)
             patrolTarget = (patrolTarget == pointA) ? pointB : pointA;
 
-        Move(Mathf.Sign(dx), patrolSpeed);
+        Move(Mathf.Sign(dx), stats.patrolSpeed);
 
         if (CanSeePlayer()) { state = State.Chase; lostTimer = 0f; }
     }
@@ -56,13 +47,13 @@ public class Patroller : EnemyBase
     void DoChase()
     {
         float dx = player.position.x - transform.position.x;
-        Move(Mathf.Sign(dx), chaseSpeed);
+        Move(Mathf.Sign(dx), stats.chaseSpeed);
 
-        if (Vector2.Distance(transform.position, player.position) <= attackRange)
+        if (Vector2.Distance(transform.position, player.position) <= stats.attackRange)
         {
             Stop();
             state = State.WindUp;
-            timer = windUp;
+            timer = stats.windUpTime;
             sprite.color = Color.red;            // телеграф
             return;
         }
@@ -71,7 +62,7 @@ public class Patroller : EnemyBase
         else
         {
             lostTimer += Time.fixedDeltaTime;
-            if (lostTimer >= loseSightTime) state = State.Patrol;
+            if (lostTimer >= stats.loseSightTime) state = State.Patrol;
         }
     }
 
@@ -82,15 +73,15 @@ public class Patroller : EnemyBase
         if (timer > 0f) return;
 
         // удар: только если игрок всё ещё рядом (можно увернуться)
-        if (Vector2.Distance(transform.position, player.position) <= attackRange)
+        if (Vector2.Distance(transform.position, player.position) <= stats.attackRange)
         {
             PlayerHealth hp = player.GetComponent<PlayerHealth>();
-            if (hp != null) hp.TakeDamage(damage);
+            if (hp != null) hp.TakeDamage(stats.damage);
         }
 
         sprite.color = Color.white;
         state = State.Cooldown;
-        timer = cooldown;
+        timer = stats.cooldown;
     }
 
     void DoCooldown()

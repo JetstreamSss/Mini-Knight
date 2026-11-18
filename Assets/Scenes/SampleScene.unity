@@ -879,21 +879,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f881e186a4d1e024d99cf385e0e0e771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Patroller
-  visionRange: 6
-  viewAngle: 60
+  stats: {fileID: 11400000, guid: ff48988e9a3004f4a9a012fc32c51781, type: 2}
   sightMask:
     serializedVersion: 2
     m_Bits: 65
   eyes: {fileID: 1719641972}
   pointA: {fileID: 552704071}
   pointB: {fileID: 1423533016}
-  patrolSpeed: 1.5
-  chaseSpeed: 3
-  loseSightTime: 2
-  attackRange: 1.2
-  windUp: 0.5
-  cooldown: 1.5
-  damage: 1
   sprite: {fileID: 221366493}
 --- !u!1 &248583472
 GameObject:
@@ -4196,8 +4188,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1239177370}
   - {fileID: 1606265532}
+  - {fileID: 1239177370}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4551,7 +4543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 5
-  jumpForce: 17
+  jumpForce: 10
   fallLimit: -10
 --- !u!95 &1849269304
 Animator:

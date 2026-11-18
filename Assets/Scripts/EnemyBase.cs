@@ -2,9 +2,10 @@ using UnityEngine;
 
 public abstract class EnemyBase : MonoBehaviour
 {
+    [Header("Data")]
+    [SerializeField] protected EnemyStats stats;
+
     [Header("Vision")]
-    [SerializeField] protected float visionRange = 6f;
-    [SerializeField] protected float viewAngle = 60f;      // половина конуса, градусы
     [SerializeField] protected LayerMask sightMask;        // Ground + Player
     [SerializeField] protected Transform eyes;
 
@@ -30,12 +31,12 @@ public abstract class EnemyBase : MonoBehaviour
         Vector2 origin = eyes != null ? (Vector2)eyes.position : (Vector2)transform.position;
         Vector2 toPlayer = (Vector2)player.position - origin;
 
-        if (toPlayer.magnitude > visionRange) return false;                    // 1. дистанция
-        if (Vector2.Angle(new Vector2(facing, 0), toPlayer) > viewAngle)       // 2. угол
+        if (toPlayer.magnitude > stats.visionRange) return false;               // 1. дистанция
+        if (Vector2.Angle(new Vector2(facing, 0), toPlayer) > stats.viewAngle)  // 2. угол
             return false;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, toPlayer.normalized,      // 3. стены
-                                             visionRange, sightMask);
+        RaycastHit2D hit = Physics2D.Raycast(origin, toPlayer.normalized,       // 3. стены
+                                             stats.visionRange, sightMask);
         return hit.collider != null && hit.collider.CompareTag("Player");
     }
 
@@ -61,7 +62,8 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void OnDrawGizmosSelected()
     {
+        if (stats == null) return;
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, visionRange);
+        Gizmos.DrawWireSphere(transform.position, stats.visionRange);
     }
 }
