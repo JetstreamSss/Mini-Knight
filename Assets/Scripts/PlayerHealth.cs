@@ -142,7 +142,8 @@ public class PlayerHealth : MonoBehaviour
 
         yield return new WaitForSeconds(Mathf.Min(0.45f, respawnDelay));
         MusicManager.Play(GameSound.Lose);
-        yield return new WaitForSeconds(Mathf.Max(0f, respawnDelay - 0.45f));
+        if (respawnDelay > 0.45f)
+            yield return new WaitForSeconds(respawnDelay - 0.45f);
 
         transform.position = spawnPosition;
 

@@ -26,6 +26,7 @@ public class MusicManager : MonoBehaviour
     private AudioSource[] voices;
     private AudioClip[] clips;
     private Coroutine fade;
+    private Coroutine pendingSettingsSave;
     private AudioSource targetTrack;
     private int nextVoice;
 
@@ -58,8 +59,17 @@ public class MusicManager : MonoBehaviour
         playing = mixer.FindSnapshot("Playing");
         paused = mixer.FindSnapshot("Paused");
 
-        AudioMixerGroup music = mixer.FindMatchingGroups("Music Volume")[0];
-        AudioMixerGroup sfx = mixer.FindMatchingGroups("SFX")[0];
+        AudioMixerGroup[] musicGroups = mixer.FindMatchingGroups("Music Volume");
+        AudioMixerGroup[] sfxGroups = mixer.FindMatchingGroups("SFX");
+        if (musicGroups.Length == 0 || sfxGroups.Length == 0 || playing == null || paused == null)
+        {
+            Debug.LogError("Mini Knight AudioMixer groups or snapshots are missing.");
+            enabled = false;
+            return;
+        }
+
+        AudioMixerGroup music = musicGroups[0];
+        AudioMixerGroup sfx = sfxGroups[0];
         menuTrack = MakeTrack(music, "MenuTheme");
         levelTrack = MakeTrack(music, "LevelTheme");
         voices = new AudioSource[12];
@@ -112,7 +122,10 @@ public class MusicManager : MonoBehaviour
         foreach (GameObject root in scene.GetRootGameObjects())
         {
             foreach (Button button in root.GetComponentsInChildren<Button>(true))
-                button.onClick.AddListener(PlayClick);
+            {
+                if (button.onClick.GetPersistentEventCount() > 0)
+                    button.onClick.AddListener(PlayClick);
+            }
         }
 
         bool menuMusic = scene.name == "MainMenu" || scene.name == "WinScene";
@@ -200,6 +213,15 @@ public class MusicManager : MonoBehaviour
         volume = Mathf.Clamp01(volume);
         ApplyVolume(parameter, volume);
         PlayerPrefs.SetFloat(SettingsPrefix + parameter, volume);
+        if (instance != null && instance.pendingSettingsSave == null)
+            instance.pendingSettingsSave = instance.StartCoroutine(instance.FlushSettings());
+    }
+
+    private IEnumerator FlushSettings()
+    {
+        yield return new WaitForSecondsRealtime(0.3f);
+        PlayerPrefs.Save();
+        pendingSettingsSave = null;
     }
 
     private static void ApplyVolume(string parameter, float volume)

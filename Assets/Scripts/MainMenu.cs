@@ -1,3 +1,4 @@
+using System.Collections;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,12 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        StartCoroutine(QuitAfterClick());
+    }
+
+    private IEnumerator QuitAfterClick()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
         Application.Quit();
-        Debug.Log("Выход из игры");
     }
 }
