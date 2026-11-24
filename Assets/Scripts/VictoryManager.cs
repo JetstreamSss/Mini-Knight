@@ -5,6 +5,7 @@ public class VictoryManager : MonoBehaviour
 {
     public GameObject victoryPanel;
     public int targetCoins = 10;
+    private bool hasWon;
 
     private void Start()
     {
@@ -14,8 +15,10 @@ public class VictoryManager : MonoBehaviour
 
     public void CheckVictory(int coins)
     {
-        if (coins >= targetCoins && victoryPanel != null)
+        if (!hasWon && coins >= targetCoins && victoryPanel != null)
         {
+            hasWon = true;
+            MusicManager.Play(GameSound.Win);
             victoryPanel.SetActive(true);
             Time.timeScale = 0f;
         }

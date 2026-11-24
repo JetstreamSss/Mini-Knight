@@ -12,7 +12,6 @@ public class PlayerHealth : MonoBehaviour
     public Sprite deathSprite;
 
     public TMP_Text healthText;
-    public AudioSource damageAudio;
 
     private SpriteRenderer mainSpriteRenderer;
     private Sprite originalSprite;
@@ -54,14 +53,6 @@ public class PlayerHealth : MonoBehaviour
 
         for (int i = 0; i < spriteRenderers.Length; i++)
             originalColors[i] = spriteRenderers[i].color;
-
-        if (damageAudio == null)
-        {
-            AudioSource[] audioSources = GetComponents<AudioSource>();
-
-            if (audioSources.Length > 1)
-                damageAudio = audioSources[1];
-        }
     }
 
     private void Start()
@@ -79,8 +70,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = Mathf.Max(0, currentHealth - damage);
         UpdateHealthText();
 
-        if (damageAudio != null && damageAudio.clip != null)
-            damageAudio.PlayOneShot(damageAudio.clip);
+        MusicManager.Play(GameSound.Hit);
 
         Debug.Log("HP рыцаря: " + currentHealth);
 
@@ -122,6 +112,7 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator Respawn()
     {
         isDead = true;
+        MusicManager.Play(GameSound.Death);
 
         if (playerController != null)
             playerController.enabled = false;
@@ -149,7 +140,9 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log("Рыцарь погиб!");
 
-        yield return new WaitForSeconds(respawnDelay);
+        yield return new WaitForSeconds(Mathf.Min(0.45f, respawnDelay));
+        MusicManager.Play(GameSound.Lose);
+        yield return new WaitForSeconds(Mathf.Max(0f, respawnDelay - 0.45f));
 
         transform.position = spawnPosition;
 

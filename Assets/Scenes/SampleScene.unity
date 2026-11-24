@@ -865,8 +865,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 3
-  deathSound: {fileID: 8300000, guid: f31ab09ee8878804484530aba823f996, type: 3}
-  deathVolume: 1
 --- !u!114 &221366499
 MonoBehaviour:
   m_ObjectHideFlags: 0

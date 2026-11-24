@@ -232,8 +232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 3
-  deathSound: {fileID: 8300000, guid: f31ab09ee8878804484530aba823f996, type: 3}
-  deathVolume: 1
 --- !u!50 &55063387
 Rigidbody2D:
   serializedVersion: 5
@@ -1245,8 +1243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 3
-  deathSound: {fileID: 8300000, guid: f31ab09ee8878804484530aba823f996, type: 3}
-  deathVolume: 1
 --- !u!50 &329378513
 Rigidbody2D:
   serializedVersion: 5

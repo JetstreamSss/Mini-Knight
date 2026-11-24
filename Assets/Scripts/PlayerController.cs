@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private float moveInput;
     private float touchMove;   // направление от экранных кнопок
     private bool isGrounded;
+    private bool hasBeenAirborne;
     private bool isResetting;
 
     private void Awake()
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
         moveInput = 0f;
         touchMove = 0f;
         isGrounded = false;
+        hasBeenAirborne = false;
         isResetting = false;
 
         if (rb != null)
@@ -58,12 +60,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isResetting)
+        if (isResetting || Time.timeScale == 0f)
             return;
 
         if (transform.position.y < fallLimit)
         {
             isResetting = true;
+            MusicManager.Play(GameSound.Death);
+            MusicManager.Play(GameSound.Lose);
             Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             return;
@@ -142,6 +146,7 @@ public class PlayerController : MonoBehaviour
         if (rb == null)
             return;
 
+        MusicManager.Play(GameSound.Jump);
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         isGrounded = false;
 
@@ -186,13 +191,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-            isGrounded = true;
+        if (!collision.gameObject.CompareTag("Ground"))
+            return;
+
+        if (!isGrounded && hasBeenAirborne)
+            MusicManager.Play(GameSound.Land);
+
+        isGrounded = true;
+        hasBeenAirborne = false;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
             isGrounded = false;
+            hasBeenAirborne = true;
+        }
     }
 }

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public abstract class EnemyBase : MonoBehaviour
 {
+    protected const float VisualCueDelay = 0.16f;
+
     [Header("Data")]
     [SerializeField] protected EnemyStats stats;
 

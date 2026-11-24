@@ -20,11 +20,13 @@ public class BossHealth : MonoBehaviour
             return;
 
         currentHealth -= damage;
+        MusicManager.Play(GameSound.Hit);
         Debug.Log("Босс получил урон! Осталось HP: " + currentHealth);
 
         if (currentHealth <= 0)
         {
             isDead = true;
+            MusicManager.Play(GameSound.Death);
             Debug.Log("Босс побеждён!");
 
             string scene = SceneManager.GetActiveScene().name.ToLower();
