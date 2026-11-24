@@ -1,20 +1,15 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
 public class VolumeController : MonoBehaviour
 {
-    public AudioSource musicSource;
     public Slider volumeSlider;
 
-    void Start()
+    private void Start()
     {
+        volumeSlider.SetValueWithoutNotify(MusicManager.ReadVolume("MusicVolume"));
         volumeSlider.onValueChanged.AddListener(SetVolume);
-        SetVolume(volumeSlider.value);
     }
 
-    void SetVolume(float value)
-    {
-        musicSource.volume = value;
-    }
+    private void SetVolume(float value) => MusicManager.SaveVolume("MusicVolume", value);
 }

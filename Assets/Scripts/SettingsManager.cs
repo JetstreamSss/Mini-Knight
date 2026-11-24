@@ -12,6 +12,7 @@ public class SettingsManager : MonoBehaviour
 
     public void CloseSettings()
     {
+        PlayerPrefs.Save();
         settingsBackground.SetActive(false);
     }
 }
