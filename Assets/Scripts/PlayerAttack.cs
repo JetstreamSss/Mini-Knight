@@ -6,18 +6,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private PlayerStats stats;
     public Transform attackPoint;
     public LayerMask enemyLayer;
-    public AudioSource attackAudio;
-
-    private void Awake()
-    {
-        if (attackAudio == null)
-            attackAudio = GetComponent<AudioSource>();
-    }
 
     public void Attack()
     {
-        if (attackAudio != null && attackAudio.clip != null)
-            attackAudio.PlayOneShot(attackAudio.clip);
+        MusicManager.Play(GameSound.Swing);
 
         if (attackPoint == null)
             return;

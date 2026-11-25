@@ -21,7 +21,7 @@ public class Charger : EnemyBase
                 {
                     chargeDir = player.position.x > transform.position.x ? 1 : -1;
                     Face(chargeDir);
-                    sprite.color = Color.red;      // телеграф
+                    MusicManager.Play(GameSound.ChargeWarning);
                     timer = stats.windUpTime;
                     state = State.WindUp;
                 }
@@ -30,11 +30,14 @@ public class Charger : EnemyBase
             case State.WindUp:
                 Stop();
                 timer -= Time.fixedDeltaTime;
+                if (timer <= stats.windUpTime - VisualCueDelay)
+                    sprite.color = Color.red;
                 if (timer <= 0f)
                 {
                     timer = stats.chargeTime;
                     hitDone = false;
                     state = State.Charge;
+                    MusicManager.Play(GameSound.Charge);
                 }
                 break;
 

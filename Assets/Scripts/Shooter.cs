@@ -14,6 +14,9 @@ public class Shooter : EnemyBase
 
     void Update()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         switch (state)
         {
             case State.Idle:
@@ -21,7 +24,7 @@ public class Shooter : EnemyBase
                 {
                     state = State.Aim;
                     timer = stats.windUpTime;
-                    sprite.color = Color.red;
+                    MusicManager.Play(GameSound.ShotWarning);
                 }
                 break;
 
@@ -34,10 +37,13 @@ public class Shooter : EnemyBase
                 }
                 Face(player.position.x > transform.position.x ? 1 : -1);
                 timer -= Time.deltaTime;
+                if (timer <= stats.windUpTime - VisualCueDelay)
+                    sprite.color = Color.red;
                 if (timer <= 0f) state = State.Shoot;
                 break;
 
             case State.Shoot:
+                MusicManager.Play(GameSound.EnemyShot);
                 Fire();
                 sprite.color = Color.white;
                 state = State.Cooldown;

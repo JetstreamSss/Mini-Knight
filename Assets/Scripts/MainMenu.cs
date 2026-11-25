@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
@@ -28,5 +29,14 @@ public class MainMenu : MonoBehaviour
         MenuWidgets.Button(panel, "Назад", new Vector2(0, -143), () => Destroy(levelMenu));
     }
 
-    public void QuitGame() => Application.Quit();
+    public void QuitGame()
+    {
+        StartCoroutine(QuitAfterClick());
+    }
+
+    private IEnumerator QuitAfterClick()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        Application.Quit();
+    }
 }

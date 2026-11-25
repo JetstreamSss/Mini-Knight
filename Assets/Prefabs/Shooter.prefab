@@ -198,8 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d103e978b9d245469e90e4b222d7567, type: 3}
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  deathSound: {fileID: 8300000, guid: f31ab09ee8878804484530aba823f996, type: 3}
-  deathVolume: 1
   stats: {fileID: 11400000, guid: 8953906b8e9d4a3fbb2a031f1e094d5e, type: 2}
 --- !u!114 &55063392
 MonoBehaviour:

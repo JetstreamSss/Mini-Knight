@@ -15,6 +15,7 @@ public class VictoryManager : MonoBehaviour
     {
         if (LevelLoader.Current != null && LevelLoader.Current.ReportGoal(LevelGoal.CollectCoins, coins))
         {
+            MusicManager.Play(GameSound.Win);
             if (victoryPanel != null)
                 victoryPanel.SetActive(true);
             Time.timeScale = 0f;

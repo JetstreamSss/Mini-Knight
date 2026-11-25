@@ -14,9 +14,11 @@ public class BossHealth : MonoBehaviour
             return;
 
         currentHealth -= damage;
+        MusicManager.Play(GameSound.Hit);
         if (currentHealth > 0)
             return;
 
+        MusicManager.Play(GameSound.Death);
         if (LevelLoader.Current != null && LevelLoader.Current.ReportBossDefeated())
             SceneManager.LoadScene("WinScene");
 

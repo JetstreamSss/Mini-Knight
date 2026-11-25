@@ -51,6 +51,8 @@ public sealed class LevelLoader : MonoBehaviour
             return;
 
         timedOut = true;
+        MusicManager.Play(GameSound.Lose);
+        MusicManager.SetPaused(true);
         Time.timeScale = 0f;
         var overlay = MenuWidgets.Overlay("Time expired", 40);
         var panel = MenuWidgets.Modal(overlay.transform, "Время вышло");

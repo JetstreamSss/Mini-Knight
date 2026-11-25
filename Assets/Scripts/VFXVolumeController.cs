@@ -5,14 +5,11 @@ public class VFXVolumeController : MonoBehaviour
 {
     public Slider vfxSlider;
 
-    void Start()
+    private void Start()
     {
-        vfxSlider.onValueChanged.AddListener(SetVFXVolume);
-        SetVFXVolume(vfxSlider.value);
+        vfxSlider.SetValueWithoutNotify(MusicManager.ReadVolume("SFXVolume"));
+        vfxSlider.onValueChanged.AddListener(SetVolume);
     }
 
-    void SetVFXVolume(float value)
-    {
-        AudioListener.volume = value;
-    }
+    private void SetVolume(float value) => MusicManager.SaveVolume("SFXVolume", value);
 }

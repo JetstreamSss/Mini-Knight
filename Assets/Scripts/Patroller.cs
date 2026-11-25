@@ -57,7 +57,7 @@ public class Patroller : EnemyBase
             Stop();
             state = State.WindUp;
             timer = stats.windUpTime;
-            sprite.color = Color.red;            // телеграф
+            MusicManager.Play(GameSound.MeleeWarning);
             return;
         }
 
@@ -73,7 +73,11 @@ public class Patroller : EnemyBase
     {
         Stop();
         timer -= Time.fixedDeltaTime;
+        if (timer <= stats.windUpTime - VisualCueDelay)
+            sprite.color = Color.red;
         if (timer > 0f) return;
+
+        MusicManager.Play(GameSound.EnemySwing);
 
         // удар: только если игрок всё ещё рядом (можно увернуться)
         if (Vector2.Distance(transform.position, player.position) <= stats.attackRange)

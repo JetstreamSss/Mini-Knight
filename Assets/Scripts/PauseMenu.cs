@@ -9,12 +9,14 @@ public class PauseMenu : MonoBehaviour
     {
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
+        MusicManager.SetPaused(true);
     }
 
     public void Resume()
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+        MusicManager.SetPaused(false);
     }
 
     public void Restart()

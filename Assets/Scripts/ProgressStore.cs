@@ -4,6 +4,7 @@ using UnityEngine;
 public sealed class ProgressStore : MonoBehaviour
 {
     public const string MusicVolumeKey = "miniknight.musicVolume";
+    public const string SfxVolumeKey = "miniknight.sfxVolume";
     public const string VibrationKey = "miniknight.vibration";
     public static SaveData Data { get; private set; }
     public static bool VibrationEnabled => PlayerPrefs.GetInt(VibrationKey, 1) != 0;
@@ -39,8 +40,10 @@ public sealed class ProgressStore : MonoBehaviour
         Data = new SaveData();
         needsSave = false;
         PlayerPrefs.DeleteKey(MusicVolumeKey);
+        PlayerPrefs.DeleteKey(SfxVolumeKey);
         PlayerPrefs.DeleteKey(VibrationKey);
         PlayerPrefs.Save();
+        MusicManager.ReloadVolumes();
         return true;
     }
 

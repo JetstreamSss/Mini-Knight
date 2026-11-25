@@ -9,7 +9,6 @@ public class CoinManager : MonoBehaviour
     public int coins = 0;
     public TMP_Text coinText;
     public VictoryManager victoryManager;
-    public AudioSource coinAudioSource;
 
     private void Awake()
     {
@@ -22,10 +21,7 @@ public class CoinManager : MonoBehaviour
         coins++;
         UpdateText();
 
-        if (coinAudioSource != null)
-        {
-            coinAudioSource.PlayOneShot(coinAudioSource.clip);
-        }
+        MusicManager.Play(GameSound.Pickup);
 
         if (victoryManager != null)
         {

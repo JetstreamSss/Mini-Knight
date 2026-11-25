@@ -56,6 +56,7 @@ internal static class MenuWidgets
         image.color = destructive ? new Color(0.62f, 0.15f, 0.20f) : ButtonColor;
         var button = rect.gameObject.AddComponent<Button>();
         button.targetGraphic = image;
+        button.onClick.AddListener(MusicManager.PlayClick);
         if (action != null)
             button.onClick.AddListener(action);
         Label(rect, title, Center, Vector2.zero, rect.sizeDelta).fontSize = 24;
